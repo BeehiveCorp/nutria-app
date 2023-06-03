@@ -11,7 +11,7 @@ export const COLORS_SCHEME = Object.freeze({
   },
   [THEME.LIGHT]: {
     accent: '#00F060',
-    background: '#F9F8FD',
+    background: '#EAEAEA',
     container: '#FFFFFF',
     title: '#000000',
     text: '#00000050',

@@ -19,10 +19,10 @@ export default function App() {
   if (!fontsLoaded) return null;
 
   return (
-    <UserProvider>
-      <ThemeProvider>
+    <ThemeProvider>
+      <UserProvider>
         <GlobalNavigation />
-      </ThemeProvider>
-    </UserProvider>
+      </UserProvider>
+    </ThemeProvider>
   );
 }

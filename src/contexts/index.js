@@ -1,3 +1,4 @@
 import { ThemeContext } from './ThemeContext';
+import { UserContext } from './UserContext';
 
-export { ThemeContext };
+export { ThemeContext, UserContext };

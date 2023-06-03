@@ -1,9 +1,11 @@
-import { NavigationContainer } from '@react-navigation/native';
+import { useContext } from 'react';
 
+import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { Login, Home, Profile } from '../pages';
+import { UserContext } from '../contexts';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -18,9 +20,18 @@ function Explore() {
 }
 
 export function GlobalNavigation() {
+  const { user } = useContext(UserContext);
+
+  if (user === undefined) return null;
+
+  const initialRouteName = user?.id ? 'Explore' : 'Login';
+
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Navigator
+        initialRouteName={initialRouteName}
+        screenOptions={{ headerShown: false }}
+      >
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Explore" component={Explore} />
       </Stack.Navigator>

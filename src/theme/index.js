@@ -1,3 +1,4 @@
+import { Dimensions } from 'react-native';
 import { THEME } from '../utils/constants';
 
 export const COLORS_SCHEME = Object.freeze({
@@ -17,7 +18,7 @@ export const COLORS_SCHEME = Object.freeze({
   },
 });
 
-export class ColorPalette {
+export class Palette {
   constructor({
     accent = '',
     background = '',
@@ -32,3 +33,23 @@ export class ColorPalette {
     this.text = text;
   }
 }
+
+export const GLOBAL_SIZES = Object.freeze({
+  horizontalSpacing: 24,
+  deviceWidth: Dimensions.get('window').width,
+  deviceHeight: Dimensions.get('window').height,
+});
+
+export const FONT_SIZES = Object.freeze({
+  h1: 24,
+  h2: 16,
+  p: 12,
+});
+
+export const FONT_FAMILIES = Object.freeze({
+  montserrat: {
+    regular: 'Montserrat_400Regular',
+    semiBold: 'Montserrat_600SemiBold',
+    bold: 'Montserrat_700Bold',
+  },
+});

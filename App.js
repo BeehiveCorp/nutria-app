@@ -7,7 +7,7 @@ import {
 
 import { ThemeProvider } from './src/contexts/ThemeContext';
 import { UserProvider } from './src/contexts/UserContext';
-import { GlobalNavigation } from './src/navigation';
+import GlobalNavigation from './src/navigation';
 
 export default function App() {
   let [fontsLoaded] = useFonts({

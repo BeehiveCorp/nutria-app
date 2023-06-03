@@ -5,7 +5,6 @@ import { StatusBar } from 'expo-status-bar';
 
 import { ThemeContext, UserContext } from '../../contexts';
 import { THEME } from '../../utils/constants';
-
 import { NutriaLogo } from '../../components';
 
 import getStyles from './styles';
@@ -20,7 +19,7 @@ const Splash = ({ navigation }) => {
     setTimeout(() => {
       if (user === null) navigation.navigate('Login');
       if (user?.id) navigation.navigate('Explore');
-    }, 3000);
+    }, 1000);
   }, [user]);
 
   return (

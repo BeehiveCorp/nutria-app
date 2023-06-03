@@ -1,30 +1,19 @@
 import React, { useContext } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
 
-import { ThemeContext, UserContext } from '../../contexts';
+import { ThemeContext } from '../../contexts';
+
+import { NutriaLogo } from '../../components';
 
 import getStyles from './styles';
 
 const Login = ({ navigation }) => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
-  const { setUser } = useContext(UserContext);
+  const { theme } = useContext(ThemeContext);
   const styles = getStyles(theme);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.screenText}>Qual</Text>
-
-      <TouchableOpacity onPress={() => navigation.navigate('Explore')}>
-        <Text style={styles.screenText}>Ir</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={toggleTheme}>
-        <Text style={styles.screenText}>toggle theme</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => setUser({ name: String(Math.random()) })}>
-        <Text style={styles.screenText}>change user</Text>
-      </TouchableOpacity>
+      <NutriaLogo iconOnly iconColor={theme.title} />
     </View>
   );
 };

@@ -9,6 +9,7 @@ export default getStyles = (theme) => {
       flex: 1,
       backgroundColor: palette.background,
       paddingHorizontal: GLOBAL_SIZES.horizontalSpacing,
+      alignItems: 'center',
     },
     screenText: {
       marginTop: 100,

@@ -34,8 +34,14 @@ export default getStyles = (theme) => {
       fontSize: FONT_SIZES.medium,
       fontFamily: FONT_FAMILIES.montserrat.regular,
       color: palette.accent,
-      textDecorationStyle: 'solid',
       textDecorationLine: 'underline',
+    },
+    forgotPassword: {
+      textAlign: 'right',
+      fontSize: FONT_SIZES.small,
+      color: palette.text,
+      textDecorationLine: 'underline',
+      marginBottom: 24,
     },
     form: {
       marginTop: 48,

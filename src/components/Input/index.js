@@ -20,13 +20,13 @@ const Input = ({
   onIconPress,
   placeholder,
   errorMessage,
+  value = '',
   ...rest
 }) => {
   const { theme } = useContext(ThemeContext);
   const styles = getStyles(theme);
 
   const [showPassword, setShowPassword] = useState(false);
-  const [value, setValue] = useState('');
 
   const onIconContainerPress = () => {
     if (isPassword) {
@@ -40,7 +40,7 @@ const Input = ({
   const Icon = () => {
     let iconName = icon;
 
-    if (isPassword) iconName = showPassword ? 'eye-off' : 'eye';
+    if (isPassword && value.length > 0) iconName = showPassword ? 'eye-off' : 'eye';
 
     return <Feather name={iconName} color={theme.text} size={20} />;
   };
@@ -63,7 +63,6 @@ const Input = ({
           value={value}
           onChangeText={(text, unmasked) => {
             onChangeText(text, unmasked);
-            setValue(text);
           }}
           {...rest}
         />

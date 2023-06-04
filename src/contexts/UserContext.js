@@ -3,7 +3,7 @@ import React, { createContext, useEffect, useState } from 'react';
 
 export const UserContext = createContext();
 
-export const UserProvider = ({ children }) => {
+export const UserProvider = ({ onGetStoredUser, children }) => {
   const [user, setUser] = useState(undefined);
 
   const getStoredUser = async () => {
@@ -11,15 +11,17 @@ export const UserProvider = ({ children }) => {
 
     if (storedUser) {
       setUser(JSON.parse(storedUser));
+      onGetStoredUser();
       return;
     }
 
     setUser(null);
+    onGetStoredUser();
   };
 
   const logout = async () => {
     setUser(null);
-    await AsyncStorage.removeItem('@user');
+    AsyncStorage.removeItem('@user');
   };
 
   useEffect(() => {
@@ -29,6 +31,8 @@ export const UserProvider = ({ children }) => {
   if (user === undefined) return null;
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ user, setUser, logout }}>
+      {children}
+    </UserContext.Provider>
   );
 };

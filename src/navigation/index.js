@@ -6,16 +6,16 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { ThemeContext } from '../contexts';
+import { ThemeContext, UserContext } from '../contexts';
 
-import { Splash, Login, Home, Profile } from '../pages';
+import { Login, Home, Profile } from '../pages';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 function Explore() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
@@ -24,14 +24,23 @@ function Explore() {
 
 function GlobalNavigation() {
   const { theme } = useContext(ThemeContext);
+  const { user } = useContext(UserContext);
+
+  const isUserSigned = user?.id;
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: theme.background }}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Splash" component={Splash} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Explore" component={Explore} />
+          {isUserSigned ? (
+            <>
+              <Stack.Screen name="Explore" component={Explore} />
+            </>
+          ) : (
+            <>
+              <Stack.Screen name="Login" component={Login} />
+            </>
+          )}
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>

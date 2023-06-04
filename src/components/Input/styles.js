@@ -6,7 +6,7 @@ export default getStyles = (theme) => {
 
   return StyleSheet.create({
     container: {
-      height: 52,
+      height: 50,
       borderRadius: 8,
       backgroundColor: palette.container,
       borderWidth: 1,

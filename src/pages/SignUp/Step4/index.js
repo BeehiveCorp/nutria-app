@@ -9,15 +9,14 @@ import { StepsProgress } from '../components';
 
 import getStyles from './styles';
 
-const Step3 = ({ navigation }) => {
+const Step4 = ({ navigation }) => {
   const styles = getStyles();
   const { theme } = useContext(ThemeContext);
 
-  const { currentStep, handleNextStep, handlePrevStep } = useContext(SignUpContext);
+  const { currentStep, handlePrevStep } = useContext(SignUpContext);
 
   const onNextStepPress = () => {
-    navigation.navigate('SignUpStep4');
-    handleNextStep();
+    // navigation.navigate('SignUpStep2');
   };
 
   const onPrevStepPress = () => {
@@ -45,10 +44,10 @@ const Step3 = ({ navigation }) => {
       </Box>
 
       <Box style={styles.footer}>
-        <Button text="Próximo" icon="arrow-right-circle" onPress={onNextStepPress} />
+        {/* <Button text="Próximo" icon="arrow-right-circle" onPress={onNextStepPress} /> */}
       </Box>
     </Box>
   );
 };
 
-export default Step3;
+export default Step4;

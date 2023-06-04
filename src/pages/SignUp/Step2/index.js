@@ -1,15 +1,54 @@
 import React, { useContext, useState } from 'react';
-import { View, Text } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 
-import { UserContext } from '../../../contexts';
-import { Box, Button, Input, NutriaLogo } from '../../../components';
+import { Feather } from '@expo/vector-icons';
+
+import { SignUpContext, ThemeContext } from '../../../contexts';
+import { Box, Button, Input } from '../../../components';
+import { StepsProgress } from '../components';
 
 import getStyles from './styles';
 
 const Step2 = ({ navigation }) => {
   const styles = getStyles();
+  const { theme } = useContext(ThemeContext);
 
-  return <View style={styles.container}></View>;
+  const { currentStep, handleNextStep, handlePrevStep } = useContext(SignUpContext);
+
+  const onNextStepPress = () => {
+    navigation.navigate('SignUpStep3');
+    handleNextStep();
+  };
+
+  const onPrevStepPress = () => {
+    navigation.goBack();
+    handlePrevStep();
+  };
+
+  return (
+    <Box style={styles.container}>
+      <StepsProgress currentStep={currentStep} totalSteps={4} />
+
+      <Box style={styles.header}>
+        <TouchableOpacity onPress={onPrevStepPress}>
+          <Feather name="arrow-left" size={26} color={theme.title} />
+        </TouchableOpacity>
+
+        <Text style={styles.title}>Como te chamamos?</Text>
+        <Text style={styles.description}>
+          O primeiro passo é escolher um username disponível e nos dizer seu nome.
+        </Text>
+      </Box>
+
+      <Box style={styles.content}>
+        <Input />
+      </Box>
+
+      <Box style={styles.footer}>
+        <Button text="Próximo" icon="arrow-right-circle" onPress={onNextStepPress} />
+      </Box>
+    </Box>
+  );
 };
 
 export default Step2;

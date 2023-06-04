@@ -8,14 +8,31 @@ export default getStyles = () => {
   const { theme } = useContext(ThemeContext);
   const palette = new Palette(theme);
 
-  console.log(theme);
-
   return StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: palette.background,
       paddingHorizontal: GLOBAL_SIZES.horizontalSpacing,
-      paddingVertical: 16,
+      paddingVertical: 24,
+    },
+    header: {
+      marginVertical: 40,
+    },
+    title: {
+      marginTop: 32,
+      fontSize: FONT_SIZES.big,
+      fontFamily: FONT_FAMILIES.montserrat.semiBold,
+      color: palette.title,
+    },
+    description: {
+      marginTop: 8,
+      fontSize: FONT_SIZES.medium,
+      fontFamily: FONT_FAMILIES.montserrat.regular,
+      color: palette.text,
+      lineHeight: FONT_SIZES.medium * 1.4,
+    },
+    content: {
+      flex: 1,
     },
   });
 };

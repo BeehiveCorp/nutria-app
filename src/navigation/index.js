@@ -14,6 +14,7 @@ import {
   SignUpStep1,
   SignUpStep2,
   SignUpStep3,
+  SignUpStep4,
 } from '../pages';
 
 const Tab = createBottomTabNavigator();
@@ -42,8 +43,21 @@ function NonAuthNavigation() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignUpStep1" component={SignUpStep1} />
-        <Stack.Screen name="SignUpStep2" component={SignUpStep2} />
-        <Stack.Screen name="SignUpStep3" component={SignUpStep3} />
+        <Stack.Screen
+          name="SignUpStep2"
+          component={SignUpStep2}
+          options={{ animationEnabled: false }}
+        />
+        <Stack.Screen
+          name="SignUpStep3"
+          component={SignUpStep3}
+          options={{ animationEnabled: false }}
+        />
+        <Stack.Screen
+          name="SignUpStep4"
+          component={SignUpStep4}
+          options={{ animationEnabled: false }}
+        />
       </Stack.Navigator>
     </SignUpProvider>
   );

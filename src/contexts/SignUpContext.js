@@ -3,7 +3,7 @@ import React, { createContext, useEffect, useState } from 'react';
 export const SignUpContext = createContext();
 
 export const SignUpProvider = ({ onGetStoredUser, children }) => {
-  const [step, setStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(1);
 
   const [newUser, setNewUser] = useState({
     name: null,
@@ -20,9 +20,9 @@ export const SignUpProvider = ({ onGetStoredUser, children }) => {
     riskPregnant: null,
   });
 
-  const handleNextStep = () => setStep((prev) => prev++);
+  const handleNextStep = () => setCurrentStep((prev) => prev + 1);
 
-  const handlePrevStep = () => setStep((prev) => prev--);
+  const handlePrevStep = () => setCurrentStep((prev) => prev - 1);
 
   const updateNewUser = (props) => setPregnancy((prev) => ({ ...prev, ...props }));
 
@@ -31,7 +31,7 @@ export const SignUpProvider = ({ onGetStoredUser, children }) => {
   return (
     <SignUpContext.Provider
       value={{
-        step,
+        currentStep,
         newUser,
         pregnancy,
         handleNextStep,

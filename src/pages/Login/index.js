@@ -1,9 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
+import { TOAST_VARIANTS } from '../../utils/constants';
+import { triggerToast } from '../../utils/global';
+
+import { UserService } from '../../services';
+
 import { ThemeContext, UserContext } from '../../contexts';
 import { Box, Button, Input, NutriaLogo } from '../../components';
-import { UserService } from '../../services';
 
 import getStyles from './styles';
 
@@ -12,14 +16,17 @@ const Login = ({ navigation }) => {
   const { setUser } = useContext(UserContext);
   const styles = getStyles(theme);
 
-  const [email, setEmail] = useState('davidalmeida154of@gmail.com');
-  const [password, setPassword] = useState('123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const login = async (email, password) => {
     const { data, error } = await UserService.login({ email, password });
 
     if (error) {
-      console.log(error);
+      triggerToast({
+        variant: TOAST_VARIANTS.ERROR,
+        message: error,
+      });
       return;
     }
 

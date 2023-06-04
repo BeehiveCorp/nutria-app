@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { View } from 'react-native';
 
 import {
   useFonts,
@@ -7,13 +8,14 @@ import {
   Montserrat_700Bold,
 } from '@expo-google-fonts/montserrat';
 
-import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+
+import Toast from 'react-native-toast-message';
 
 import { ThemeProvider } from './src/contexts/ThemeContext';
 import { UserProvider } from './src/contexts/UserContext';
+import { Toast as TheToast } from './src/components';
 import GlobalNavigation from './src/navigation';
-import { View } from 'react-native';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -30,6 +32,13 @@ export default function App() {
     setAppIsReady(true);
   };
 
+  const toastConfig = {
+    success: ({ props }) => <TheToast variant="success" {...props} />,
+    error: ({ props }) => <TheToast variant="error" {...props} />,
+    warning: ({ props }) => <TheToast variant="warning" {...props} />,
+    info: ({ props }) => <TheToast variant="info" {...props} />,
+  };
+
   const onLayoutRootView = useCallback(async () => {
     if (appIsReady && fontsLoaded) {
       setTimeout(async () => {
@@ -43,6 +52,7 @@ export default function App() {
       <ThemeProvider>
         <UserProvider onGetStoredUser={onGetStoredUser}>
           <GlobalNavigation />
+          <Toast config={toastConfig} topOffset={64} />
         </UserProvider>
       </ThemeProvider>
     </View>

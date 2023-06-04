@@ -1,11 +1,18 @@
 import { Dimensions } from 'react-native';
 import { THEME } from '../utils/constants';
 
-const STATUS_COLORS_SCHEME = Object.freeze({
+export const STATUS_COLORS_SCHEME = Object.freeze({
   error: '#FF3838',
   warning: '#FFB302',
   success: '#00F060',
-  available: '#2DCCFF',
+  info: '#2DCCFF',
+});
+
+export const STATUS_ICONS = Object.freeze({
+  error: 'x-circle',
+  warning: 'alert-triangle',
+  success: 'check-circle',
+  info: 'alert-circle',
 });
 
 export const COLORS_SCHEME = Object.freeze({
@@ -40,7 +47,7 @@ export class Palette {
     error = '',
     warning = '',
     success = '',
-    available = '',
+    info = '',
   } = {}) {
     this.accent = accent;
     this.background = background;
@@ -51,7 +58,7 @@ export class Palette {
     this.error = error;
     this.warning = warning;
     this.success = success;
-    this.available = available;
+    this.info = info;
   }
 }
 

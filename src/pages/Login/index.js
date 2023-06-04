@@ -23,10 +23,7 @@ const Login = ({ navigation }) => {
     const { data, error } = await UserService.login({ email, password });
 
     if (error) {
-      triggerToast({
-        variant: TOAST_VARIANTS.ERROR,
-        message: error,
-      });
+      triggerToast({ variant: TOAST_VARIANTS.ERROR, message: error });
       return;
     }
 
@@ -75,6 +72,7 @@ const Login = ({ navigation }) => {
           <Button
             text="Entrar"
             icon="arrow-right-circle"
+            isDisabled={email.length === 0 || password.length === 0}
             onPress={() => {
               login(email, password);
             }}

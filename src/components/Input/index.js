@@ -61,6 +61,7 @@ const Input = ({
           secureTextEntry={isPassword && !showPassword}
           mask={mask}
           value={value}
+          autoCapitalize="none"
           onChangeText={(text, unmasked) => {
             onChangeText(text, unmasked);
           }}

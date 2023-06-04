@@ -7,16 +7,16 @@ export default getStyles = (theme) => {
   const palette = new Palette(theme);
 
   return StyleSheet.create({
-    container: {
+    container: (isDisabled) => ({
       height: 50,
       borderRadius: 8,
-      backgroundColor: palette.accent,
-    },
-    text: {
+      backgroundColor: isDisabled ? palette.disabled : palette.accent,
+    }),
+    text: (isDisabled) => ({
       fontSize: FONT_SIZES.medium,
       fontFamily: FONT_FAMILIES.montserrat.bold,
-      color: palette.background,
+      color: isDisabled ? palette.border : palette.background,
       paddingHorizontal: 8,
-    },
+    }),
   });
 };

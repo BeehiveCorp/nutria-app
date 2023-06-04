@@ -21,6 +21,7 @@ export const COLORS_SCHEME = Object.freeze({
     background: '#000000',
     container: '#0E0E0E',
     border: '#262626',
+    disabled: '#171717',
     title: '#FFFFFF',
     text: '#FFFFFF60',
     ...STATUS_COLORS_SCHEME,
@@ -30,6 +31,7 @@ export const COLORS_SCHEME = Object.freeze({
     background: '#FFFFFF',
     container: '#FAFAFA',
     border: '#EAEAEA',
+    disabled: '#F5F5F5',
     title: '#000000',
     text: '#00000060',
     ...STATUS_COLORS_SCHEME,
@@ -42,6 +44,7 @@ export class Palette {
     background = '',
     container = '',
     border = '',
+    disabled = '',
     title = '',
     text = '',
     error = '',
@@ -53,6 +56,7 @@ export class Palette {
     this.background = background;
     this.container = container;
     this.border = border;
+    this.disabled = disabled;
     this.title = title;
     this.text = text;
     this.error = error;

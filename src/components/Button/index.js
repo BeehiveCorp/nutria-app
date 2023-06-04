@@ -9,15 +9,26 @@ import Box from '../Box';
 
 import getStyles from './styles';
 
-const Button = ({ onPress, text, icon, isLoading }) => {
+const Button = ({ onPress, text, icon, isLoading, isDisabled = false }) => {
   const { theme } = useContext(ThemeContext);
   const styles = getStyles(theme);
 
   return (
-    <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
-      <Box horizontal justifyContentCenter alignItemsCenter style={styles.container}>
-        {!!text && <Text style={styles.text}>{text}</Text>}
-        {!!icon && <Feather name={icon} size={20} color={theme.background} />}
+    <TouchableOpacity onPress={onPress} activeOpacity={0.8} disabled={isDisabled}>
+      <Box
+        horizontal
+        justifyContentCenter
+        alignItemsCenter
+        style={styles.container(isDisabled)}
+      >
+        {!!text && <Text style={styles.text(isDisabled)}>{text}</Text>}
+        {!!icon && (
+          <Feather
+            name={icon}
+            size={20}
+            color={isDisabled ? theme.border : theme.background}
+          />
+        )}
         {isLoading && <ActivityIndicator />}
       </Box>
     </TouchableOpacity>

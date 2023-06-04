@@ -11,7 +11,7 @@ import getStyles from './styles';
 
 const Button = ({ onPress, text, icon, isLoading, isDisabled = false }) => {
   const { theme } = useContext(ThemeContext);
-  const styles = getStyles(theme);
+  const styles = getStyles();
 
   return (
     <TouchableOpacity onPress={onPress} activeOpacity={0.8} disabled={isDisabled}>

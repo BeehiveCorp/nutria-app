@@ -14,7 +14,7 @@ import getStyles from './styles';
 const Login = ({ navigation }) => {
   const { theme } = useContext(ThemeContext);
   const { setUser } = useContext(UserContext);
-  const styles = getStyles(theme);
+  const styles = getStyles();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

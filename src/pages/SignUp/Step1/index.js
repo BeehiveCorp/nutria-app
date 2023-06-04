@@ -7,8 +7,7 @@ import { Box, Button, Input, NutriaLogo } from '../../../components';
 import getStyles from './styles';
 
 const Step1 = ({ navigation }) => {
-  const { theme } = useContext(ThemeContext);
-  const styles = getStyles(theme);
+  const styles = getStyles();
 
   return <View style={styles.container}></View>;
 };

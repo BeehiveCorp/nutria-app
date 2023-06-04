@@ -24,7 +24,7 @@ const Input = ({
   ...rest
 }) => {
   const { theme } = useContext(ThemeContext);
-  const styles = getStyles(theme);
+  const styles = getStyles();
 
   const [showPassword, setShowPassword] = useState(false);
 

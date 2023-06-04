@@ -14,7 +14,7 @@ import chroma from 'chroma-js';
 
 const Toast = ({ variant, message, description }) => {
   const { theme } = useContext(ThemeContext);
-  const styles = getStyles(theme);
+  const styles = getStyles();
 
   const accentColor = STATUS_COLORS_SCHEME[variant];
   const iconName = STATUS_ICONS[variant];

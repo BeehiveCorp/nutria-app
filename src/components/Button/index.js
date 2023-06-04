@@ -22,14 +22,18 @@ const Button = ({ onPress, text, icon, isLoading, isDisabled = false }) => {
         style={styles.container(isDisabled)}
       >
         {!!text && <Text style={styles.text(isDisabled)}>{text}</Text>}
-        {!!icon && (
-          <Feather
-            name={icon}
-            size={20}
-            color={isDisabled ? theme.border : theme.background}
-          />
+
+        {isLoading ? (
+          <ActivityIndicator />
+        ) : (
+          !!icon && (
+            <Feather
+              name={icon}
+              size={20}
+              color={isDisabled ? theme.border : theme.background}
+            />
+          )
         )}
-        {isLoading && <ActivityIndicator />}
       </Box>
     </TouchableOpacity>
   );

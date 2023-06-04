@@ -12,9 +12,8 @@ import * as SplashScreen from 'expo-splash-screen';
 
 import Toast from 'react-native-toast-message';
 
-import { ThemeProvider } from './src/contexts/ThemeContext';
-import { UserProvider } from './src/contexts/UserContext';
 import { Toast as TheToast } from './src/components';
+import { ThemeProvider, UserProvider } from './src/contexts';
 import GlobalNavigation from './src/navigation';
 
 SplashScreen.preventAutoHideAsync();

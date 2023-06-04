@@ -1,4 +1,12 @@
-import { ThemeContext } from './ThemeContext';
-import { UserContext } from './UserContext';
+import { ThemeContext, ThemeProvider } from './ThemeContext';
+import { UserContext, UserProvider } from './UserContext';
+import { SignUpContext, SignUpProvider } from './SignUpContext';
 
-export { ThemeContext, UserContext };
+export {
+  ThemeContext,
+  ThemeProvider,
+  UserContext,
+  UserProvider,
+  SignUpContext,
+  SignUpProvider,
+};

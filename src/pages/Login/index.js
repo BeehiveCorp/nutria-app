@@ -19,8 +19,14 @@ const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const login = async (email, password) => {
+    setIsLoading(true);
+
     const { data, error } = await UserService.login({ email, password });
+
+    setIsLoading(false);
 
     if (error) {
       triggerToast({ variant: TOAST_VARIANTS.ERROR, message: error });
@@ -28,6 +34,10 @@ const Login = ({ navigation }) => {
     }
 
     setUser(data);
+  };
+
+  const onNewAccountPress = () => {
+    navigation.navigate('SignUpStep1');
   };
 
   return (
@@ -42,7 +52,7 @@ const Login = ({ navigation }) => {
         <Box horizontal alignItemsCenter style={styles.descriptionContainer}>
           <Text style={styles.description}>Faça login ou </Text>
 
-          <TouchableOpacity activeOpacity={0.8}>
+          <TouchableOpacity activeOpacity={0.8} onPress={onNewAccountPress}>
             <Text style={styles.link}>crie uma nova conta</Text>
           </TouchableOpacity>
 
@@ -64,7 +74,7 @@ const Login = ({ navigation }) => {
           </Box>
 
           <Box>
-            <TouchableOpacity>
+            <TouchableOpacity activeOpacity={0.8} onPress={null}>
               <Text style={styles.forgotPassword}>Esqueci minha senha</Text>
             </TouchableOpacity>
           </Box>
@@ -72,7 +82,8 @@ const Login = ({ navigation }) => {
           <Button
             text="Entrar"
             icon="arrow-right-circle"
-            isDisabled={email.length === 0 || password.length === 0}
+            isDisabled={email.length === 0 || password.length === 0 || isLoading}
+            isLoading={isLoading}
             onPress={() => {
               login(email, password);
             }}

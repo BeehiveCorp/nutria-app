@@ -1,14 +1,20 @@
 import { useContext } from 'react';
 
-import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
-
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { ThemeContext, UserContext } from '../contexts';
+import { ThemeContext, UserContext, SignUpProvider } from '../contexts';
 
-import { Login, Home, Profile } from '../pages';
+import {
+  Login,
+  Home,
+  Profile,
+  SignUpStep1,
+  SignUpStep2,
+  SignUpStep3,
+} from '../pages';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -22,6 +28,27 @@ function Explore() {
   );
 }
 
+function AuthNavigation() {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Explore" component={Explore} />
+    </Stack.Navigator>
+  );
+}
+
+function NonAuthNavigation() {
+  return (
+    <SignUpProvider>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="SignUpStep1" component={SignUpStep1} />
+        <Stack.Screen name="SignUpStep2" component={SignUpStep2} />
+        <Stack.Screen name="SignUpStep3" component={SignUpStep3} />
+      </Stack.Navigator>
+    </SignUpProvider>
+  );
+}
+
 function GlobalNavigation() {
   const { theme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);
@@ -31,17 +58,7 @@ function GlobalNavigation() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: theme.background }}>
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          {isUserSigned ? (
-            <>
-              <Stack.Screen name="Explore" component={Explore} />
-            </>
-          ) : (
-            <>
-              <Stack.Screen name="Login" component={Login} />
-            </>
-          )}
-        </Stack.Navigator>
+        {isUserSigned ? <AuthNavigation /> : <NonAuthNavigation />}
       </NavigationContainer>
     </SafeAreaView>
   );

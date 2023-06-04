@@ -12,7 +12,7 @@ export default getStyles = (theme) => {
       alignItems: 'center',
     },
     poweredBy: {
-      fontSize: FONT_SIZES.p,
+      fontSize: FONT_SIZES.small,
       color: palette.title,
       fontFamily: FONT_FAMILIES.montserrat.regular,
       position: 'absolute',

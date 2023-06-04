@@ -1,19 +1,14 @@
 import { useContext } from 'react';
 
-import {
-  SafeAreaView,
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { Splash, Login, Home, Profile } from '../pages';
-
 import { ThemeContext } from '../contexts';
-import { StatusBar } from 'react-native';
+
+import { Splash, Login, Home, Profile } from '../pages';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();

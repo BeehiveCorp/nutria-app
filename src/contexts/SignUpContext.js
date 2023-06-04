@@ -24,7 +24,7 @@ export const SignUpProvider = ({ onGetStoredUser, children }) => {
 
   const handlePrevStep = () => setCurrentStep((prev) => prev - 1);
 
-  const updateNewUser = (props) => setPregnancy((prev) => ({ ...prev, ...props }));
+  const updateNewUser = (props) => setNewUser((prev) => ({ ...prev, ...props }));
 
   const updatePregnancy = (props) => setPregnancy((prev) => ({ ...prev, ...props }));
 

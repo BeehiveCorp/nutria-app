@@ -13,7 +13,8 @@ const Step1 = ({ navigation }) => {
   const styles = getStyles();
   const { theme } = useContext(ThemeContext);
 
-  const { currentStep, handleNextStep, handlePrevStep } = useContext(SignUpContext);
+  const { currentStep, handleNextStep, newUser, updateNewUser } =
+    useContext(SignUpContext);
 
   const onNextStepPress = () => {
     navigation.navigate('SignUpStep2');
@@ -22,6 +23,14 @@ const Step1 = ({ navigation }) => {
 
   const onPrevStepPress = () => {
     navigation.goBack();
+  };
+
+  const updateUserName = (txt) => {
+    updateNewUser({ name: txt });
+  };
+
+  const updateUserEmail = (txt) => {
+    updateNewUser({ email: txt });
   };
 
   return (
@@ -41,10 +50,10 @@ const Step1 = ({ navigation }) => {
 
       <Box style={styles.content}>
         <Box style={{ marginBottom: 24 }}>
-          <Input label="Nome" value={null} />
+          <Input label="Nome" value={newUser.name} onChangeText={updateUserName} />
         </Box>
 
-        <Input label="E-mail" value={null} />
+        <Input label="E-mail" value={newUser.email} onChangeText={updateUserEmail} />
       </Box>
 
       <Box style={styles.footer}>

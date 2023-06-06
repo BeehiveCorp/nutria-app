@@ -10,14 +10,14 @@ export const SignUpProvider = ({ onGetStoredUser, children }) => {
     email: 'davidameida@gmail.com',
     birthDate: '05/08/2003',
     gender: 'M',
-    weight: '',
-    height: '',
+    weight: '62,5',
+    height: '175',
     password: '',
   });
 
   const [pregnancy, setPregnancy] = useState({
-    weeks: null,
-    riskPregnant: null,
+    weeks: '',
+    riskPregnancy: false,
   });
 
   const handleNextStep = () => setCurrentStep((prev) => prev + 1);

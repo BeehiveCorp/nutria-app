@@ -1,11 +1,18 @@
-import React, { useContext, useRef } from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import React, { Fragment, useContext, useRef, useState } from 'react';
+import { ScrollView, Text, TouchableOpacity } from 'react-native';
 
 import { Feather, Ionicons } from '@expo/vector-icons';
 
 import { SignUpContext, ThemeContext } from '../../../contexts';
 import { GENDERS } from '../../../utils/constants';
-import { BottomSheet, Box, Button, Input, Option } from '../../../components';
+import {
+  BottomSheet,
+  Box,
+  Button,
+  Checkbox,
+  Input,
+  Option,
+} from '../../../components';
 import { StepsProgress } from '../components';
 
 import getStyles from './styles';
@@ -16,8 +23,17 @@ const Step2 = ({ navigation }) => {
 
   const genderBottomSheetRef = useRef(null);
 
-  const { currentStep, handleNextStep, handlePrevStep, newUser, updateNewUser } =
-    useContext(SignUpContext);
+  const {
+    currentStep,
+    handleNextStep,
+    handlePrevStep,
+    newUser,
+    updateNewUser,
+    pregnancy,
+    updatePregnancy,
+  } = useContext(SignUpContext);
+
+  const [isPregnant, setIsPregnant] = useState(false);
 
   const onNextStepPress = () => {
     navigation.navigate('SignUpStep3');
@@ -42,6 +58,16 @@ const Step2 = ({ navigation }) => {
     genderBottomSheetRef?.current?.close();
   };
 
+  const updateRiskPregnancy = () => {
+    updatePregnancy({ riskPregnancy: !pregnancy.riskPregnancy });
+  };
+
+  const updatePregnancyWeeks = (txt) => {
+    updatePregnancy({ weeks: txt });
+  };
+
+  const handleTogglePregnancy = () => setIsPregnant((prev) => !prev);
+
   const shouldAdvance =
     newUser.weight !== '' && newUser.height !== '' && newUser.gender !== '';
 
@@ -61,38 +87,69 @@ const Step2 = ({ navigation }) => {
       </Box>
 
       <Box style={styles.content}>
-        <Input
-          label="Peso (KG)"
-          value={newUser.weight}
-          onChangeText={updateUserWeight}
-          keyboardType="numeric"
-          returnKeyType="done"
-          containerStyle={{ marginBottom: 24 }}
-        />
+        <ScrollView contentContainerStyle={{ paddingBottom: 32 }}>
+          <Input
+            label="Peso (KG)"
+            value={newUser.weight}
+            onChangeText={updateUserWeight}
+            keyboardType="numeric"
+            returnKeyType="done"
+            containerStyle={{ marginBottom: 24 }}
+          />
 
-        <Input
-          label="Altura (CM)"
-          value={newUser.height}
-          onChangeText={updateUserHeight}
-          keyboardType="numeric"
-          returnKeyType="done"
-          containerStyle={{ marginBottom: 24 }}
-        />
+          <Input
+            label="Altura (CM)"
+            value={newUser.height}
+            onChangeText={updateUserHeight}
+            keyboardType="numeric"
+            returnKeyType="done"
+            containerStyle={{ marginBottom: 24 }}
+          />
 
-        <Input
-          label="Sexo"
-          value={
-            newUser.gender === 'M'
-              ? 'Masculino'
-              : newUser.gender === 'F'
-              ? 'Feminino'
-              : ''
-          }
-          onChangeText={updateUserGender}
-          onPress={() => genderBottomSheetRef?.current?.collapse()}
-          onIconPress={() => genderBottomSheetRef?.current?.collapse()}
-          icon="chevron-up"
-        />
+          <Input
+            label="Sexo"
+            value={
+              newUser.gender === 'M'
+                ? 'Masculino'
+                : newUser.gender === 'F'
+                ? 'Feminino'
+                : ''
+            }
+            onChangeText={updateUserGender}
+            onPress={() => genderBottomSheetRef?.current?.collapse()}
+            onIconPress={() => genderBottomSheetRef?.current?.collapse()}
+            icon="chevron-up"
+          />
+
+          {newUser.gender === GENDERS.FEMALE && (
+            <Box style={{ marginVertical: 24 }}>
+              <Checkbox
+                value="Estou grávida"
+                onPress={handleTogglePregnancy}
+                isSelected={isPregnant}
+              />
+            </Box>
+          )}
+
+          {newUser.gender === GENDERS.FEMALE && isPregnant && (
+            <Fragment>
+              <Input
+                label="Semanas de gravidez"
+                value={pregnancy.weeks}
+                onChangeText={updatePregnancyWeeks}
+                keyboardType="numeric"
+                returnKeyType="done"
+                containerStyle={{ marginBottom: 24 }}
+              />
+
+              <Checkbox
+                value="É uma gravidez de risco"
+                onPress={updateRiskPregnancy}
+                isSelected={pregnancy.riskPregnancy}
+              />
+            </Fragment>
+          )}
+        </ScrollView>
       </Box>
 
       <Box style={styles.footer}>

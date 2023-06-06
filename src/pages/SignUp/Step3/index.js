@@ -13,7 +13,10 @@ const Step3 = ({ navigation }) => {
   const styles = getStyles();
   const { theme } = useContext(ThemeContext);
 
-  const { currentStep, handleNextStep, handlePrevStep } = useContext(SignUpContext);
+  const [passwordRepeat, setPasswordRepeat] = useState();
+
+  const { currentStep, handleNextStep, handlePrevStep, newUser, updateNewUser } =
+    useContext(SignUpContext);
 
   const onNextStepPress = () => {
     navigation.navigate('SignUpStep4');
@@ -25,6 +28,13 @@ const Step3 = ({ navigation }) => {
     handlePrevStep();
   };
 
+  const updateUserPassword = (txt) => {
+    updateNewUser({ password: txt });
+  };
+
+  const shouldAdvance =
+    newUser.password !== '' && newUser.password === passwordRepeat;
+
   return (
     <Box style={styles.container}>
       <StepsProgress currentStep={currentStep} totalSteps={4} />
@@ -34,18 +44,34 @@ const Step3 = ({ navigation }) => {
           <Feather name="arrow-left" size={26} color={theme.title} />
         </TouchableOpacity>
 
-        <Text style={styles.title}>Como te chamamos?</Text>
-        <Text style={styles.description}>
-          O primeiro passo é escolher um username disponível e nos dizer seu nome.
-        </Text>
+        <Text style={styles.title}>Crie uma senha</Text>
+        <Text style={styles.description}>Defina uma senha segura.</Text>
       </Box>
 
       <Box style={styles.content}>
-        <Input />
+        <Input
+          label="Nova senha"
+          value={newUser.password}
+          onChangeText={updateUserPassword}
+          containerStyle={{ marginBottom: 24 }}
+          isPassword
+        />
+
+        <Input
+          label="Repita a nova senha"
+          value={passwordRepeat}
+          onChangeText={setPasswordRepeat}
+          isPassword
+        />
       </Box>
 
       <Box style={styles.footer}>
-        <Button text="Próximo" icon="arrow-right-circle" onPress={onNextStepPress} />
+        <Button
+          text="Próximo"
+          icon="arrow-right-circle"
+          onPress={onNextStepPress}
+          isDisabled={!shouldAdvance}
+        />
       </Box>
     </Box>
   );

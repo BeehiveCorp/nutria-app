@@ -5,6 +5,7 @@ import { Feather, Ionicons } from '@expo/vector-icons';
 
 import { SignUpContext, ThemeContext } from '../../../contexts';
 import { GENDERS } from '../../../utils/constants';
+
 import {
   BottomSheet,
   Box,
@@ -13,6 +14,7 @@ import {
   Input,
   Option,
 } from '../../../components';
+
 import { StepsProgress } from '../components';
 
 import getStyles from './styles';

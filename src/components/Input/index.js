@@ -22,6 +22,7 @@ const Input = ({
   errorMessage,
   value = '',
   containerStyle = null,
+  onPress,
   ...rest
 }) => {
   const { theme } = useContext(ThemeContext);
@@ -35,7 +36,9 @@ const Input = ({
       return;
     }
 
-    onIconPress();
+    {
+      onIconPress && onIconPress();
+    }
   };
 
   const Icon = () => {
@@ -54,20 +57,30 @@ const Input = ({
       {!!label && <Text style={{ ...styles.label, color }}>{label}</Text>}
 
       <Box horizontal spaceBetween style={{ ...styles.container, borderColor }}>
-        <MaskInput
-          style={styles.input}
-          placeholderTextColor={theme.text}
-          placeholder={placeholder}
-          selectionColor={errorMessage ? theme.error : theme.accent}
-          secureTextEntry={isPassword && !showPassword}
-          mask={mask}
-          value={value}
-          autoCapitalize="none"
-          onChangeText={(text, unmasked) => {
-            onChangeText(text, unmasked);
-          }}
-          {...rest}
-        />
+        {onPress ? (
+          <TouchableOpacity
+            style={styles.input}
+            onPress={onPress}
+            activeOpacity={0.8}
+          >
+            <Text style={styles.value}>{value}</Text>
+          </TouchableOpacity>
+        ) : (
+          <MaskInput
+            style={styles.input}
+            placeholderTextColor={theme.text}
+            placeholder={placeholder}
+            selectionColor={errorMessage ? theme.error : theme.accent}
+            secureTextEntry={isPassword && !showPassword}
+            mask={mask}
+            value={value}
+            autoCapitalize="none"
+            onChangeText={(text, unmasked) => {
+              onChangeText(text, unmasked);
+            }}
+            {...rest}
+          />
+        )}
 
         {(!!icon || isLoading || isPassword) && (
           <TouchableOpacity

@@ -9,6 +9,8 @@ export default getStyles = () => {
   const { theme } = useContext(ThemeContext);
   const palette = new Palette(theme);
 
+  const indicatorBottomOffset = 24;
+
   return StyleSheet.create({
     sheetBackground: {
       backgroundColor: theme.container,
@@ -20,21 +22,28 @@ export default getStyles = () => {
       marginHorizontal: 4,
     },
     handle: {
-      top: -26,
+      top: -indicatorBottomOffset,
     },
     handleIndicator: {
       backgroundColor: palette.text,
     },
     container: {
       flex: 1,
-      marginTop: -20,
-      padding: 24,
+      marginTop: -indicatorBottomOffset,
+      padding: 20,
     },
-    text: {
+    header: {
+      marginBottom: 32,
+    },
+    title: {
       fontSize: FONT_SIZES.medium,
       fontFamily: FONT_FAMILIES.montserrat.bold,
       color: palette.title,
-      paddingHorizontal: 8,
+    },
+    description: {
+      fontSize: FONT_SIZES.small,
+      fontFamily: FONT_FAMILIES.montserrat.regular,
+      color: palette.text,
     },
   });
 };

@@ -18,9 +18,13 @@ export default getStyles = () => {
       borderColor: palette.border,
     },
     input: {
+      flex: 1,
       paddingHorizontal: 16,
       color: palette.title,
-      flex: 1,
+      justifyContent: 'center',
+    },
+    value: {
+      color: palette.title,
     },
     label: {
       fontSize: FONT_SIZES.small,

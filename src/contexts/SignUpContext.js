@@ -9,7 +9,7 @@ export const SignUpProvider = ({ onGetStoredUser, children }) => {
     name: 'David',
     email: 'davidameida@gmail.com',
     birthDate: '05/08/2003',
-    gender: '',
+    gender: 'M',
     weight: '',
     height: '',
     password: '',

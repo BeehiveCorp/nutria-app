@@ -1,10 +1,11 @@
 import React, { useContext, useRef } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
-import { Feather } from '@expo/vector-icons';
+import { Feather, Ionicons } from '@expo/vector-icons';
 
 import { SignUpContext, ThemeContext } from '../../../contexts';
-import { BottomSheet, Box, Button, Input } from '../../../components';
+import { GENDERS } from '../../../utils/constants';
+import { BottomSheet, Box, Button, Input, Option } from '../../../components';
 import { StepsProgress } from '../components';
 
 import getStyles from './styles';
@@ -38,6 +39,7 @@ const Step2 = ({ navigation }) => {
 
   const updateUserGender = (txt) => {
     updateNewUser({ gender: txt });
+    genderBottomSheetRef?.current?.close();
   };
 
   const shouldAdvance =
@@ -77,11 +79,19 @@ const Step2 = ({ navigation }) => {
           containerStyle={{ marginBottom: 24 }}
         />
 
-        <Input label="Sexo" value={newUser.gender} onChangeText={updateUserGender} />
-
-        <Button
-          text="Abrir"
+        <Input
+          label="Sexo"
+          value={
+            newUser.gender === 'M'
+              ? 'Masculino'
+              : newUser.gender === 'F'
+              ? 'Feminino'
+              : ''
+          }
+          onChangeText={updateUserGender}
           onPress={() => genderBottomSheetRef?.current?.collapse()}
+          onIconPress={() => genderBottomSheetRef?.current?.collapse()}
+          icon="chevron-up"
         />
       </Box>
 
@@ -94,8 +104,30 @@ const Step2 = ({ navigation }) => {
         />
       </Box>
 
-      <BottomSheet ref={genderBottomSheetRef}>
-        <Text>Oii</Text>
+      <BottomSheet
+        ref={genderBottomSheetRef}
+        snapPoints={['32%']}
+        title="Escolha um sexo"
+        description="Toque para selecionar"
+      >
+        <Option
+          value="Masculino"
+          renderIcon={() => (
+            <Ionicons name="md-male" size={20} color={theme.title} />
+          )}
+          onPress={() => updateUserGender(GENDERS.MALE)}
+          isSelected={newUser.gender === GENDERS.MALE}
+          style={{ marginBottom: 12 }}
+        />
+
+        <Option
+          value="Feminino"
+          renderIcon={() => (
+            <Ionicons name="md-female" size={20} color={theme.title} />
+          )}
+          onPress={() => updateUserGender(GENDERS.FEMALE)}
+          isSelected={newUser.gender === GENDERS.FEMALE}
+        />
       </BottomSheet>
     </Box>
   );

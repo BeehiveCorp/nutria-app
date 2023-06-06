@@ -9,3 +9,8 @@ export const TOAST_VARIANTS = Object.freeze({
   WARNING: 'warning',
   INFO: 'info',
 });
+
+export const GENDERS = Object.freeze({
+  MALE: 'M',
+  FEMALE: 'F',
+});

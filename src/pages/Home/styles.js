@@ -19,5 +19,9 @@ export default getStyles = () => {
       fontFamily: FONT_FAMILIES.montserrat.bold,
       color: palette.title,
     },
+    avatar: {
+      width: 80,
+      height: 80,
+    },
   });
 };

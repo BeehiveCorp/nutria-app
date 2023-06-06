@@ -28,6 +28,19 @@ class UserService {
       return { error: message };
     }
   };
+
+  static create = async ({ payload }) => {
+    try {
+      await api.post('/users/create', payload);
+
+      const { data } = await this.checkUserExistence({ email: payload.email });
+
+      return { data };
+    } catch (error) {
+      const { message } = error.response.data.error;
+      return { error: message };
+    }
+  };
 }
 
 export default UserService;

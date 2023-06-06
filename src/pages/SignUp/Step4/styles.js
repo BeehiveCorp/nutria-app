@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import { StyleSheet } from 'react-native';
 
+import chroma from 'chroma-js';
+
 import { Palette, FONT_SIZES, GLOBAL_SIZES, FONT_FAMILIES } from '../../../theme';
 import { ThemeContext } from '../../../contexts';
 
@@ -33,6 +35,21 @@ export default getStyles = () => {
     },
     content: {
       flex: 1,
+    },
+    avatar: {
+      backgroundColor: palette.container,
+      width: 140,
+      height: 140,
+      borderRadius: 70,
+    },
+    add: {
+      position: 'absolute',
+      bottom: 8,
+      right: 8,
+      backgroundColor: chroma(palette.accent).darken(4).alpha(0.9).hex(),
+      width: 32,
+      height: 32,
+      borderRadius: 16,
     },
   });
 };

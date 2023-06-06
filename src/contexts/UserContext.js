@@ -24,6 +24,11 @@ export const UserProvider = ({ onGetStoredUser, children }) => {
     AsyncStorage.removeItem('@user');
   };
 
+  const storeUser = async (userToStore) => {
+    setUser(userToStore);
+    await AsyncStorage.setItem('@user', JSON.stringify(userToStore));
+  };
+
   useEffect(() => {
     getStoredUser();
   }, []);
@@ -31,7 +36,7 @@ export const UserProvider = ({ onGetStoredUser, children }) => {
   if (user === undefined) return null;
 
   return (
-    <UserContext.Provider value={{ user, setUser, logout }}>
+    <UserContext.Provider value={{ user, setUser, logout, storeUser }}>
       {children}
     </UserContext.Provider>
   );

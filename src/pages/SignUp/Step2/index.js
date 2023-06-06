@@ -33,9 +33,9 @@ const Step2 = ({ navigation }) => {
     updateNewUser,
     pregnancy,
     updatePregnancy,
+    isPregnant,
+    setIsPregnant,
   } = useContext(SignUpContext);
-
-  const [isPregnant, setIsPregnant] = useState(false);
 
   const onNextStepPress = () => {
     navigation.navigate('SignUpStep3');
@@ -70,8 +70,10 @@ const Step2 = ({ navigation }) => {
 
   const handleTogglePregnancy = () => setIsPregnant((prev) => !prev);
 
-  const shouldAdvance =
+  let shouldAdvance =
     newUser.weight !== '' && newUser.height !== '' && newUser.gender !== '';
+
+  if (isPregnant) shouldAdvance = shouldAdvance && pregnancy.weeks !== '';
 
   return (
     <Box style={styles.container}>

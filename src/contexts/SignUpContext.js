@@ -4,6 +4,7 @@ export const SignUpContext = createContext();
 
 export const SignUpProvider = ({ onGetStoredUser, children }) => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [isPregnant, setIsPregnant] = useState(false);
 
   const [newUser, setNewUser] = useState({
     name: 'David',
@@ -34,10 +35,12 @@ export const SignUpProvider = ({ onGetStoredUser, children }) => {
         currentStep,
         newUser,
         pregnancy,
+        isPregnant,
         handleNextStep,
         handlePrevStep,
         updateNewUser,
         updatePregnancy,
+        setIsPregnant,
       }}
     >
       {children}

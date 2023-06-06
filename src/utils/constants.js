@@ -14,3 +14,8 @@ export const GENDERS = Object.freeze({
   MALE: 'M',
   FEMALE: 'F',
 });
+
+export const BOTTOM_TABS_PAGES = Object.freeze({
+  HOME: 'HOME',
+  PROFILE: 'PROFILE',
+});

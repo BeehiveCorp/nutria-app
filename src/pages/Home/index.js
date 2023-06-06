@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
 import { Image } from 'expo-image';
 
@@ -18,11 +18,43 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
-      <Image
-        source={{ uri: getFormattedBase64(user.avatar) }}
-        style={styles.avatar}
-      />
-      <Button text="Logout" onPress={logout} />
+      <ScrollView>
+        <Image
+          source={{ uri: getFormattedBase64(user.avatar) }}
+          style={styles.avatar}
+        />
+        <Button text="Logout" onPress={logout} />
+
+        <Image
+          source={{ uri: getFormattedBase64(user.avatar) }}
+          style={styles.avatar}
+        />
+        <Button text="Logout" onPress={logout} />
+
+        <Image
+          source={{ uri: getFormattedBase64(user.avatar) }}
+          style={styles.avatar}
+        />
+        <Button text="Logout" onPress={logout} />
+
+        <Image
+          source={{ uri: getFormattedBase64(user.avatar) }}
+          style={styles.avatar}
+        />
+        <Button text="Logout" onPress={logout} />
+
+        <Image
+          source={{ uri: getFormattedBase64(user.avatar) }}
+          style={styles.avatar}
+        />
+        <Button text="Logout" onPress={logout} />
+
+        <Image
+          source={{ uri: getFormattedBase64(user.avatar) }}
+          style={styles.avatar}
+        />
+        <Button text="Logout" onPress={logout} />
+      </ScrollView>
     </View>
   );
 };

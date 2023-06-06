@@ -4,9 +4,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { BlurView } from 'expo-blur';
 
 import { ThemeContext, UserContext, SignUpProvider } from '../contexts';
+
+import { BOTTOM_TABS_PAGES, THEME } from '../utils/constants';
 
 import {
   Login,
@@ -17,16 +21,54 @@ import {
   SignUpStep3,
   SignUpStep4,
 } from '../pages';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
+import { TabBarItem } from './components';
+
+import getStyles from './styles';
+import { Box } from '../components';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 function Explore() {
+  const { themeCode } = useContext(ThemeContext);
+  const styles = getStyles();
+
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Profile" component={Profile} />
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarShowLabel: false,
+        tabBarStyle: styles.container,
+        tabBarBackground: () => (
+          <Box style={styles.background}>
+            <BlurView
+              tint={themeCode === THEME.DARK ? 'dark' : 'light'}
+              intensity={40}
+              style={styles.blur}
+            />
+          </Box>
+        ),
+      }}
+    >
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <TabBarItem focused={focused} pageCode={BOTTOM_TABS_PAGES.HOME} />
+          ),
+        }}
+        name="Home"
+        component={Home}
+      />
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <TabBarItem focused={focused} pageCode={BOTTOM_TABS_PAGES.PROFILE} />
+          ),
+        }}
+        name="Profile"
+        component={Profile}
+      />
     </Tab.Navigator>
   );
 }

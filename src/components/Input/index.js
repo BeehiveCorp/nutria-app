@@ -21,6 +21,7 @@ const Input = ({
   placeholder,
   errorMessage,
   value = '',
+  containerStyle = null,
   ...rest
 }) => {
   const { theme } = useContext(ThemeContext);
@@ -49,7 +50,7 @@ const Input = ({
   const borderColor = errorMessage ? theme.error : styles.container.borderColor;
 
   return (
-    <Box>
+    <Box style={containerStyle}>
       {!!label && <Text style={{ ...styles.label, color }}>{label}</Text>}
 
       <Box horizontal spaceBetween style={{ ...styles.container, borderColor }}>

@@ -17,6 +17,17 @@ class UserService {
       return { error: message };
     }
   };
+
+  static checkUserExistence = async ({ email }) => {
+    try {
+      const { data } = await api.get(`/users/checkUserExistence?email=${email}`);
+
+      return { data };
+    } catch (error) {
+      const { message } = error.response.data.error;
+      return { error: message };
+    }
+  };
 }
 
 export default UserService;

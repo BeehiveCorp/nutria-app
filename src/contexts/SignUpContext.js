@@ -6,13 +6,13 @@ export const SignUpProvider = ({ onGetStoredUser, children }) => {
   const [currentStep, setCurrentStep] = useState(1);
 
   const [newUser, setNewUser] = useState({
-    name: null,
-    birthDate: null,
-    gender: null,
-    weight: null,
-    height: null,
-    email: null,
-    password: null,
+    name: 'David',
+    email: 'davidameida@gmail.com',
+    birthDate: '05/08/2003',
+    gender: '',
+    weight: '',
+    height: '',
+    password: '',
   });
 
   const [pregnancy, setPregnancy] = useState({

@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 
 import { ThemeContext, UserContext, SignUpProvider } from '../contexts';
 
@@ -16,6 +17,7 @@ import {
   SignUpStep3,
   SignUpStep4,
 } from '../pages';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -80,8 +82,12 @@ function GlobalNavigation() {
 
 export default function () {
   return (
-    <SafeAreaProvider>
-      <GlobalNavigation />
-    </SafeAreaProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <BottomSheetModalProvider>
+        <SafeAreaProvider>
+          <GlobalNavigation />
+        </SafeAreaProvider>
+      </BottomSheetModalProvider>
+    </GestureHandlerRootView>
   );
 }

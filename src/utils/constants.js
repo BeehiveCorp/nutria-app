@@ -19,3 +19,28 @@ export const BOTTOM_TABS_PAGES = Object.freeze({
   HOME: 'HOME',
   PROFILE: 'PROFILE',
 });
+
+export const WEEKDAYS = [
+  'Segunda',
+  'Terça',
+  'Quarta',
+  'Quinta',
+  'Sexta',
+  'Sábado',
+  'Domingo',
+];
+
+export const MONTHS = [
+  'jan',
+  'fev',
+  'mar',
+  'abr',
+  'mai',
+  'jun',
+  'jul',
+  'ago',
+  'set',
+  'out',
+  'nov',
+  'dez',
+];

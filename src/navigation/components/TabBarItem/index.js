@@ -4,11 +4,11 @@ import { Feather } from '@expo/vector-icons';
 import chroma from 'chroma-js';
 
 import { ThemeContext } from '../../../contexts';
+import { BOTTOM_TABS_PAGES } from '../../../utils/constants';
 
 import { Box } from '../../../components';
 
 import getStyles from './styles';
-import { BOTTOM_TABS_PAGES } from '../../../utils/constants';
 
 const Option = ({ focused, pageCode }) => {
   const { theme } = useContext(ThemeContext);

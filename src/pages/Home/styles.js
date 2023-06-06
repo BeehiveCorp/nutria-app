@@ -11,17 +11,11 @@ export default getStyles = () => {
   return StyleSheet.create({
     container: {
       flex: 1,
+      paddingTop: 24,
       backgroundColor: palette.background,
+    },
+    boundaries: {
       paddingHorizontal: GLOBAL_SIZES.horizontalSpacing,
-    },
-    screenText: {
-      fontSize: FONT_SIZES.h1,
-      fontFamily: FONT_FAMILIES.montserrat.bold,
-      color: palette.title,
-    },
-    avatar: {
-      width: 80,
-      height: 80,
     },
   });
 };

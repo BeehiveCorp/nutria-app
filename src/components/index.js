@@ -6,5 +6,16 @@ import Toast from './Toast';
 import BottomSheet from './BottomSheet';
 import Option from './Option';
 import Checkbox from './Checkbox';
+import UserHeader from './UserHeader';
 
-export { NutriaLogo, Box, Input, Button, Toast, BottomSheet, Option, Checkbox };
+export {
+  NutriaLogo,
+  Box,
+  Input,
+  Button,
+  Toast,
+  BottomSheet,
+  Option,
+  Checkbox,
+  UserHeader,
+};

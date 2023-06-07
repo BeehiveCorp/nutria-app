@@ -7,13 +7,24 @@ import Box from '../Box';
 
 import getStyles from './styles';
 
-const NutrientCard = ({ symbol, name, description, result, onPress }) => {
+const NutrientCard = ({
+  symbol,
+  name,
+  description,
+  result,
+  onPress,
+  containerStyle,
+}) => {
   const { theme } = useContext(ThemeContext);
   const styles = getStyles();
 
   return (
     <TouchableOpacity activeOpacity={0.8} onPress={onPress} style={{ flex: 1 }}>
-      <Box horizontal spaceBetween style={styles.container}>
+      <Box
+        horizontal
+        spaceBetween
+        style={{ ...styles.container, ...containerStyle }}
+      >
         <Box horizontal alignItemsCenter style={styles.nutrientInfoContainer}>
           <Box justifyContentCenter alignItemsCenter style={styles.symbolContainer}>
             <Text style={styles.symbol}>{symbol}</Text>

@@ -20,13 +20,18 @@ const Toast = ({ variant, message, description }) => {
   const accentColor = STATUS_COLORS_SCHEME[variant];
   const iconName = STATUS_ICONS[variant];
 
+  const isDarkMode = themeCode === THEME.DARK;
+
   return (
     <BlurView
       tint={themeCode === THEME.DARK ? 'dark' : 'light'}
       intensity={56}
       style={{
         ...styles.container,
-        backgroundColor: chroma(accentColor).darken(5).alpha(0.3).hex(),
+        backgroundColor: chroma(accentColor)
+          [isDarkMode ? 'darken' : 'brighten'](5)
+          .alpha(0.3)
+          .hex(),
         alignItems: !!description ? 'flex-start' : 'center',
       }}
     >

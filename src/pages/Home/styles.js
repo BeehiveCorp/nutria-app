@@ -40,5 +40,30 @@ export default getStyles = () => {
       borderStyle: 'dashed',
       backgroundColor: chroma(palette.accent).alpha(0.05).hex(),
     },
+    cardContainer: {
+      backgroundColor: palette.container,
+      borderRadius: 8,
+      flex: 1,
+      padding: 16,
+    },
+    cardTitle: {
+      marginTop: 16,
+      fontSize: FONT_SIZES.medium + 4,
+      fontFamily: FONT_FAMILIES.montserrat.semiBold,
+      color: palette.title,
+    },
+    cardDescription: {
+      marginTop: 4,
+      marginBottom: 16,
+      fontSize: FONT_SIZES.small + 2,
+      fontFamily: FONT_FAMILIES.montserrat.regular,
+      color: palette.text,
+    },
+    cardTitle2: {
+      marginTop: 16,
+      fontSize: FONT_SIZES.small + 2,
+      fontFamily: FONT_FAMILIES.montserrat.semiBold,
+      color: palette.title,
+    },
   });
 };

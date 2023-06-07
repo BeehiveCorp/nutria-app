@@ -8,6 +8,7 @@ import SignUpStep4 from './SignUp/Step4';
 import Settings from './Settings';
 import Exams from './Exams';
 import ExamDetails from './ExamDetails';
+import NewExam from './NewExam';
 
 export {
   Login,
@@ -20,4 +21,5 @@ export {
   Settings,
   Exams,
   ExamDetails,
+  NewExam,
 };

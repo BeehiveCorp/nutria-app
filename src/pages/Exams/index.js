@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 
 import moment from 'moment';
 import { Feather } from '@expo/vector-icons';
 
-import { ThemeContext, UserContext } from '../../contexts';
+import { ThemeContext } from '../../contexts';
 import { TOAST_VARIANTS } from '../../utils/constants';
 import { triggerToast } from '../../utils/global';
 import { ExamService } from '../../services';
@@ -12,17 +13,20 @@ import { Box, Option } from '../../components';
 
 import getStyles from './styles';
 
-const Exams = ({ navigation }) => {
+const Exams = ({ navigation, route }) => {
   const { theme } = useContext(ThemeContext);
-  const { user } = useContext(UserContext);
-
-  const [exams, setExams] = useState([]);
 
   const styles = getStyles();
 
+  const [exams, setExams] = useState([]);
+
+  const userId = route.params?.userId ?? null;
+  const dependentId = route.params?.dependentId ?? null;
+
   const getAllUserExams = async () => {
     const { data, error } = await ExamService.getAllByUserOrDependentId({
-      userId: user.id,
+      userId,
+      dependentId,
     });
 
     if (error) {
@@ -34,9 +38,18 @@ const Exams = ({ navigation }) => {
     setExams(data);
   };
 
-  useEffect(() => {
-    getAllUserExams();
-  }, []);
+  const onFABPress = () => {
+    navigation.navigate('NewExam', {
+      userId,
+      dependentId,
+    });
+  };
+
+  useFocusEffect(
+    React.useCallback(() => {
+      getAllUserExams();
+    }, [])
+  );
 
   return (
     <View style={styles.container}>
@@ -60,6 +73,12 @@ const Exams = ({ navigation }) => {
           ))}
         </Box>
       </ScrollView>
+
+      <TouchableOpacity activeOpacity={0.8} onPress={onFABPress} style={styles.FAB}>
+        <Box justifyContentCenter alignItemsCenter>
+          <Feather name="plus" size={24} color={theme.background} />
+        </Box>
+      </TouchableOpacity>
     </View>
   );
 };

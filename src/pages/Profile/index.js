@@ -47,7 +47,7 @@ const Profile = ({ navigation }) => {
             value="Meus exames"
             containerStyle={styles.option}
             style={{ marginBottom: 12 }}
-            onPress={() => navigation.navigate('Exams')}
+            onPress={() => navigation.navigate('Exams', { userId: user.id })}
             renderIcon={() => (
               <Feather name="file-text" color={theme.text} size={20} />
             )}

@@ -26,6 +26,17 @@ class ExamService {
       return { error: message };
     }
   };
+
+  static create = async ({ payload }) => {
+    try {
+      const { data } = await api.post(`/exams/insert`, payload);
+
+      return { data };
+    } catch (error) {
+      const { message } = error.response.data.error;
+      return { error: message };
+    }
+  };
 }
 
 export default ExamService;

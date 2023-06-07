@@ -23,6 +23,7 @@ import {
   Settings,
   Exams,
   ExamDetails,
+  NewExam,
 } from '../pages';
 
 import { TabBarItem } from './components';
@@ -83,6 +84,7 @@ function AuthNavigation() {
       <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="Exams" component={Exams} />
       <Stack.Screen name="ExamDetails" component={ExamDetails} />
+      <Stack.Screen name="NewExam" component={NewExam} />
     </Stack.Navigator>
   );
 }

@@ -21,16 +21,5 @@ export default getStyles = () => {
       color: palette.title,
       marginLeft: 8,
     },
-    FAB: {
-      position: 'absolute',
-      width: 48,
-      height: 48,
-      borderRadius: 24,
-      backgroundColor: palette.accent,
-      right: GLOBAL_SIZES.horizontalSpacing,
-      bottom: GLOBAL_SIZES.horizontalSpacing * 2,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
   });
 };

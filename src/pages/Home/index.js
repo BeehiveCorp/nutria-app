@@ -119,9 +119,8 @@ const Home = ({ navigation }) => {
             contentContainerStyle={styles.carousel}
           >
             {dependents.map((dependent) => (
-              <Box style={{ marginRight: 8 }}>
+              <Box key={dependent.id} style={{ marginRight: 8 }}>
                 <DependentCard
-                  key={dependent.id}
                   avatar={dependent.avatar}
                   name={dependent.name}
                   birthDate={dependent.birth_date}

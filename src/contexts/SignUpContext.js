@@ -7,12 +7,12 @@ export const SignUpProvider = ({ onGetStoredUser, children }) => {
   const [isPregnant, setIsPregnant] = useState(false);
 
   const [newUser, setNewUser] = useState({
-    name: 'David',
-    email: 'davidameida@gmail.com',
-    birthDate: '05/08/2003',
-    gender: 'M',
-    weight: '62,5',
-    height: '175',
+    name: '',
+    email: '',
+    birthDate: '',
+    gender: '',
+    weight: '',
+    height: '',
     password: '',
   });
 

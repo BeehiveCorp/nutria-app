@@ -9,6 +9,8 @@ import Checkbox from './Checkbox';
 import UserHeader from './UserHeader';
 import NutrientCard from './NutrientCard';
 import DependentCard from './DependentCard';
+import ProductCard from './ProductCard';
+import StoreCard from './StoreCard';
 
 export {
   NutriaLogo,
@@ -22,4 +24,6 @@ export {
   UserHeader,
   NutrientCard,
   DependentCard,
+  ProductCard,
+  StoreCard,
 };

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { StyleSheet } from 'react-native';
 
-import { Palette, FONT_SIZES, GLOBAL_SIZES, FONT_FAMILIES } from '../../theme';
+import { Palette, FONT_SIZES, FONT_FAMILIES, GLOBAL_SIZES } from '../../theme';
 import { ThemeContext } from '../../contexts';
 
 export default getStyles = () => {
@@ -10,27 +10,31 @@ export default getStyles = () => {
 
   return StyleSheet.create({
     container: {
-      flex: 1,
-      paddingTop: 24,
+      backgroundColor: palette.container,
+      borderRadius: 8,
+      padding: 12,
+    },
+    avatarContainer: {
       backgroundColor: palette.background,
+      height: 48,
+      width: 48,
+      borderRadius: 8,
     },
-    boundaries: {
-      paddingHorizontal: GLOBAL_SIZES.horizontalSpacing,
+    avatar: {
+      width: '100%',
+      height: '100%',
+      borderRadius: 8,
     },
-    label: {
-      fontSize: FONT_SIZES.big - 4,
+    name: {
+      fontSize: FONT_SIZES.small,
       fontFamily: FONT_FAMILIES.montserrat.semiBold,
       color: palette.title,
-      marginLeft: 8,
     },
-    link: {
+    address: {
       fontSize: FONT_SIZES.small,
       fontFamily: FONT_FAMILIES.montserrat.regular,
-      color: palette.accent,
-      textDecorationLine: 'underline',
-    },
-    carousel: {
-      paddingHorizontal: GLOBAL_SIZES.horizontalSpacing,
+      color: palette.text,
+      marginTop: 4,
     },
   });
 };

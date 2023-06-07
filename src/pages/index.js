@@ -11,6 +11,7 @@ import ExamDetails from './ExamDetails';
 import NewExam from './NewExam';
 import NewDependent from './NewDependent';
 import Stores from './Stores';
+import StoresMap from './StoresMap';
 
 export {
   Login,
@@ -26,4 +27,5 @@ export {
   NewExam,
   NewDependent,
   Stores,
+  StoresMap,
 };

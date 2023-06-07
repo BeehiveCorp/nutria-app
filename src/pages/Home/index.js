@@ -2,10 +2,12 @@ import React, { useContext, useState } from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
+import { useFocusEffect } from '@react-navigation/native';
 
 import { ThemeContext, UserContext } from '../../contexts';
+import { DependentService } from '../../services';
 
-import { Box, UserHeader } from '../../components';
+import { Box, UserHeader, DependentCard } from '../../components';
 
 import getStyles from './styles';
 
@@ -20,6 +22,24 @@ const Home = ({ navigation }) => {
   const onAddDependent = () => {
     navigation.navigate('NewDependent');
   };
+
+  const fetchDependents = async () => {
+    const { data, error } = await DependentService.getAllByUserId({ id: user.id });
+
+    if (error) {
+      triggerToast({ message: error, variant: TOAST_VARIANTS.ERROR });
+      navigation.goBack();
+      return;
+    }
+
+    setDependents(data);
+  };
+
+  useFocusEffect(
+    React.useCallback(() => {
+      fetchDependents();
+    }, [])
+  );
 
   return (
     <View style={styles.container}>
@@ -36,7 +56,22 @@ const Home = ({ navigation }) => {
             <Text style={styles.label}>Dependentes</Text>
           </Box>
 
-          <ScrollView horizontal contentContainerStyle={styles.carousel}>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.carousel}
+          >
+            {dependents.map((dependent) => (
+              <Box style={{ marginRight: 8 }}>
+                <DependentCard
+                  key={dependent.id}
+                  avatar={dependent.avatar}
+                  name={dependent.name}
+                  birthDate={dependent.birth_date}
+                />
+              </Box>
+            ))}
+
             <TouchableOpacity activeOpacity={0.8} onPress={onAddDependent}>
               <Box justifyContentCenter alignItemsCenter style={styles.addDependent}>
                 <Feather name="plus" size={24} color={theme.accent} />

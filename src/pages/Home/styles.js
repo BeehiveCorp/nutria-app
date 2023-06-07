@@ -33,7 +33,7 @@ export default getStyles = () => {
     },
     addDependent: {
       borderWidth: 1,
-      height: 120,
+      height: 132,
       width: GLOBAL_SIZES.deviceWidth * 0.25,
       borderRadius: 8,
       borderColor: palette.accent,

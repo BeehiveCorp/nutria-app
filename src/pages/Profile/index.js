@@ -1,22 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { ScrollView, Text, View } from 'react-native';
+
+import chroma from 'chroma-js';
 
 import { Image } from 'expo-image';
 
 import { Feather } from '@expo/vector-icons';
 
 import { ThemeContext, UserContext } from '../../contexts';
-import { getFormattedBase64 } from '../../utils/global';
+import { getFormattedBase64, triggerToast } from '../../utils/global';
+import { TOAST_VARIANTS } from '../../utils/constants';
 
-import { Box, Option } from '../../components';
+import { BottomSheet, Box, Option } from '../../components';
 
 import getStyles from './styles';
 
 const Profile = ({ navigation }) => {
-  const { user } = useContext(UserContext);
+  const { user, logout } = useContext(UserContext);
   const { theme } = useContext(ThemeContext);
 
   const styles = getStyles();
+
+  const logoutBottomSheetRef = useRef(null);
 
   return (
     <View style={styles.container}>
@@ -51,21 +56,53 @@ const Profile = ({ navigation }) => {
             value="Conta"
             containerStyle={styles.option}
             style={{ marginBottom: 12 }}
+            onPress={() =>
+              triggerToast({
+                variant: TOAST_VARIANTS.INFO,
+                message: 'Em desenvolvimento',
+                description: 'Essa funcionalidade ainda está em desenvolvimento',
+              })
+            }
             renderIcon={() => <Feather name="user" color={theme.text} size={20} />}
           />
 
           <Option
             value="Configurações"
             containerStyle={styles.option}
+            style={{ marginBottom: 12 }}
             onPress={() => navigation.navigate('Settings')}
             renderIcon={() => (
               <Feather name="settings" color={theme.text} size={20} />
             )}
           />
+
+          <Option
+            value="Sair"
+            containerStyle={styles.logoutOption}
+            titleStyle={{ color: chroma(theme.error).alpha(0.5).hex() }}
+            onPress={() => logoutBottomSheetRef?.current?.collapse()}
+            renderIcon={() => (
+              <Feather
+                name="log-out"
+                color={chroma(theme.error).alpha(0.5).hex()}
+                size={20}
+              />
+            )}
+            hideChevronIcon
+          />
         </Box>
 
         <Text style={styles.version}>Versão 1.0.0</Text>
       </ScrollView>
+
+      <BottomSheet
+        ref={logoutBottomSheetRef}
+        snapPoints={['22%']}
+        bottomInset={140}
+        title="Tem certeza que deseja sair?"
+      >
+        <Option value="Sim, tenho certeza" onPress={logout} />
+      </BottomSheet>
     </View>
   );
 };

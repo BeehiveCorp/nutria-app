@@ -11,7 +11,7 @@ import Box from '../Box';
 import getStyles from './styles';
 
 const BottomSheet = forwardRef(
-  ({ snapPoints, title, description, children }, ref) => {
+  ({ snapPoints, title, description, bottomInset = 32, children }, ref) => {
     const { theme } = useContext(ThemeContext);
     const styles = getStyles();
 
@@ -39,7 +39,7 @@ const BottomSheet = forwardRef(
         handleStyle={styles.handle}
         handleIndicatorStyle={styles.handleIndicator}
         backdropComponent={renderBackdrop}
-        bottomInset={32}
+        bottomInset={bottomInset}
         detached
       >
         <Box style={styles.container}>

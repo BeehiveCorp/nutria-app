@@ -20,6 +20,7 @@ export default getStyles = () => {
     },
     sheet: {
       marginHorizontal: 8,
+      elevation: 20,
     },
     handle: {
       top: -indicatorBottomOffset,

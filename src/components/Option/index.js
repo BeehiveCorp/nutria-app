@@ -15,7 +15,9 @@ const Option = ({
   isSelected,
   style,
   containerStyle,
+  titleStyle,
   renderIcon,
+  hideChevronIcon,
 }) => {
   const { theme } = useContext(ThemeContext);
   const styles = getStyles();
@@ -30,10 +32,21 @@ const Option = ({
       >
         <Box horizontal alignItemsCenter>
           {renderIcon && renderIcon()}
-          <Text style={styles.bottomSheetOptionTitle}>{value}</Text>
+
+          <Text
+            style={{
+              ...styles.bottomSheetOptionTitle,
+              ...titleStyle,
+              marginLeft: renderIcon ? 16 : 0,
+            }}
+          >
+            {value}
+          </Text>
         </Box>
 
-        <Feather name="chevron-right" size={20} color={theme.title} />
+        {!hideChevronIcon && (
+          <Feather name="chevron-right" size={20} color={theme.title} />
+        )}
       </Box>
     </TouchableOpacity>
   );

@@ -22,7 +22,7 @@ const Toast = ({ variant, message, description }) => {
   return (
     <BlurView
       tint="dark"
-      intensity={40}
+      intensity={56}
       style={{
         ...styles.container,
         backgroundColor: chroma(accentColor).darken(5).alpha(0.3).hex(),

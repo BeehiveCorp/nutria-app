@@ -11,7 +11,7 @@ import { getFormattedBase64 } from '../../utils/global';
 import { MONTHS, WEEKDAYS } from '../../utils/constants';
 import { ThemeContext, UserContext } from '../../contexts';
 
-import { Box } from '../';
+import Box from '../Box';
 
 import getStyles from './styles';
 

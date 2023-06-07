@@ -1,16 +1,15 @@
 import React, { useContext, useRef } from 'react';
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, TouchableOpacity, View } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
 
 import { THEME } from '../../utils/constants';
-import { ThemeContext, UserContext } from '../../contexts';
+import { ThemeContext } from '../../contexts';
 import { BottomSheet, Box, Input, Option } from '../../components';
 
 import getStyles from './styles';
 
 const Settings = ({ navigation }) => {
-  const { user } = useContext(UserContext);
   const { theme, themeCode, toggleTheme } = useContext(ThemeContext);
 
   const styles = getStyles();

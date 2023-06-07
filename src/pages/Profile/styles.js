@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import { StyleSheet } from 'react-native';
 
+import chroma from 'chroma-js';
+
 import { Palette, FONT_SIZES, GLOBAL_SIZES, FONT_FAMILIES } from '../../theme';
 import { ThemeContext } from '../../contexts';
 
@@ -43,6 +45,10 @@ export default getStyles = () => {
     },
     option: {
       backgroundColor: palette.container,
+    },
+    logoutOption: {
+      backgroundColor: chroma(palette.error).alpha(0.1).hex(),
+      borderColor: chroma(palette.error).alpha(0.5).hex(),
     },
     version: {
       fontSize: FONT_SIZES.small,

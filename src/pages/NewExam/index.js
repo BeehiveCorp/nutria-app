@@ -42,13 +42,11 @@ const NewExam = ({ navigation, route }) => {
   const onAddPress = async () => {
     const payload = generateExamPayload();
 
-    const { data, error } = await ExamService.create({ payload });
+    const { error } = await ExamService.create({ payload });
 
     if (error) {
       triggerToast({ message: 'Algo deu errado', variant: TOAST_VARIANTS.ERROR });
     }
-
-    console.log(JSON.stringify(data));
 
     navigation.goBack();
   };
@@ -60,7 +58,10 @@ const NewExam = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={{ paddingBottom: 120 }}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 120 }}
+      >
         <Box style={styles.header} horizontal alignItemsCenter>
           <TouchableOpacity onPress={navigation.goBack}>
             <Feather name="arrow-left" size={26} color={theme.title} />

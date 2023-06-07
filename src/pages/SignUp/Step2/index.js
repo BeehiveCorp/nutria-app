@@ -91,7 +91,10 @@ const Step2 = ({ navigation }) => {
       </Box>
 
       <Box style={styles.content}>
-        <ScrollView contentContainerStyle={{ paddingBottom: 32 }}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingBottom: 32 }}
+        >
           <Input
             label="Peso (KG)"
             value={newUser.weight}
@@ -113,9 +116,9 @@ const Step2 = ({ navigation }) => {
           <Input
             label="Sexo"
             value={
-              newUser.gender === 'M'
+              newUser.gender === GENDERS.MALE
                 ? 'Masculino'
-                : newUser.gender === 'F'
+                : newUser.gender === GENDERS.FEMALE
                 ? 'Feminino'
                 : ''
             }

@@ -25,7 +25,10 @@ const Profile = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={{ paddingBottom: 120 }}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 120 }}
+      >
         <Box alignItemsCenter>
           <Box justifyContentCenter alignItemsCenter style={styles.avatarContainer}>
             {user?.avatar ? (

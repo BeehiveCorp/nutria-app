@@ -9,6 +9,7 @@ import Settings from './Settings';
 import Exams from './Exams';
 import ExamDetails from './ExamDetails';
 import NewExam from './NewExam';
+import NewDependent from './NewDependent';
 
 export {
   Login,
@@ -22,4 +23,5 @@ export {
   Exams,
   ExamDetails,
   NewExam,
+  NewDependent,
 };

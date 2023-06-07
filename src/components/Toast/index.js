@@ -1,19 +1,20 @@
 import React, { useContext } from 'react';
 import { Text } from 'react-native';
 
+import chroma from 'chroma-js';
 import { Feather } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 
 import { ThemeContext } from '../../contexts';
+import { THEME } from '../../utils/constants';
 import { STATUS_COLORS_SCHEME, STATUS_ICONS } from '../../theme';
 
 import Box from '../Box';
 
 import getStyles from './styles';
-import chroma from 'chroma-js';
 
 const Toast = ({ variant, message, description }) => {
-  const { theme } = useContext(ThemeContext);
+  const { theme, themeCode } = useContext(ThemeContext);
   const styles = getStyles();
 
   const accentColor = STATUS_COLORS_SCHEME[variant];
@@ -21,7 +22,7 @@ const Toast = ({ variant, message, description }) => {
 
   return (
     <BlurView
-      tint="dark"
+      tint={themeCode === THEME.DARK ? 'dark' : 'light'}
       intensity={56}
       style={{
         ...styles.container,

@@ -39,7 +39,7 @@ const BottomSheet = forwardRef(
         handleStyle={styles.handle}
         handleIndicatorStyle={styles.handleIndicator}
         backdropComponent={renderBackdrop}
-        bottomInset={24}
+        bottomInset={32}
         detached
       >
         <Box style={styles.container}>

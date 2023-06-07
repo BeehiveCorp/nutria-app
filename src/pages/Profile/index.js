@@ -12,7 +12,7 @@ import { Box, Option } from '../../components';
 
 import getStyles from './styles';
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
   const { user } = useContext(UserContext);
   const { theme } = useContext(ThemeContext);
 
@@ -57,6 +57,7 @@ const Profile = () => {
           <Option
             value="Configurações"
             containerStyle={styles.option}
+            onPress={() => navigation.navigate('Settings')}
             renderIcon={() => (
               <Feather name="settings" color={theme.text} size={20} />
             )}

@@ -5,15 +5,18 @@ import chroma from 'chroma-js';
 
 import { Palette, FONT_SIZES, FONT_FAMILIES } from '../../../theme';
 import { ThemeContext } from '../../../contexts';
+import { THEME } from '../../../utils/constants';
 
 export default getStyles = () => {
-  const { theme } = useContext(ThemeContext);
+  const { theme, themeCode } = useContext(ThemeContext);
   const palette = new Palette(theme);
+
+  const isDarkMode = themeCode === THEME.DARK;
 
   return StyleSheet.create({
     container: (isFocused) => ({
       backgroundColor: isFocused
-        ? chroma(palette.container).brighten(0.2).hex()
+        ? chroma(palette.container)[isDarkMode ? 'brighten' : 'darken'](0.2).hex()
         : 'transparent',
       height: 60 - 4,
       bottom: -15,

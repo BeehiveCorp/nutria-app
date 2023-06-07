@@ -20,6 +20,7 @@ import {
   SignUpStep2,
   SignUpStep3,
   SignUpStep4,
+  Settings,
 } from '../pages';
 
 import { TabBarItem } from './components';
@@ -77,6 +78,7 @@ function AuthNavigation() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Explore" component={Explore} />
+      <Stack.Screen name="Settings" component={Settings} />
     </Stack.Navigator>
   );
 }

@@ -5,10 +5,13 @@ import chroma from 'chroma-js';
 
 import { Palette, FONT_SIZES, FONT_FAMILIES } from '../../theme';
 import { ThemeContext } from '../../contexts';
+import { THEME } from '../../utils/constants';
 
 export default getStyles = () => {
-  const { theme } = useContext(ThemeContext);
+  const { theme, themeCode } = useContext(ThemeContext);
   const palette = new Palette(theme);
+
+  const isDarkMode = themeCode === THEME.DARK;
 
   return StyleSheet.create({
     bottomSheetOption: (isSelected) => ({
@@ -17,7 +20,7 @@ export default getStyles = () => {
       borderWidth: 0.6,
       borderColor: isSelected ? palette.text : palette.border,
       backgroundColor: chroma(isSelected ? palette.text : palette.border)
-        .darken(4)
+        [isDarkMode ? 'darken' : 'brighten'](4)
         .alpha(0.3)
         .hex(),
     }),

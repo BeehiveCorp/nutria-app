@@ -47,6 +47,7 @@ const Profile = ({ navigation }) => {
             value="Meus exames"
             containerStyle={styles.option}
             style={{ marginBottom: 12 }}
+            onPress={() => navigation.navigate('Exams')}
             renderIcon={() => (
               <Feather name="file-text" color={theme.text} size={20} />
             )}
@@ -97,9 +98,10 @@ const Profile = ({ navigation }) => {
 
       <BottomSheet
         ref={logoutBottomSheetRef}
-        snapPoints={['22%']}
+        snapPoints={['25%']}
         bottomInset={140}
         title="Tem certeza que deseja sair?"
+        description="Você será redirecionado(a) para o login"
       >
         <Option value="Sim, tenho certeza" onPress={logout} />
       </BottomSheet>

@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from 'react';
-import { ScrollView, TouchableOpacity, View } from 'react-native';
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
 
@@ -24,10 +24,12 @@ const Settings = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={{ paddingBottom: 120 }}>
-        <Box style={styles.header}>
+        <Box style={styles.header} horizontal alignItemsCenter>
           <TouchableOpacity onPress={navigation.goBack}>
             <Feather name="arrow-left" size={26} color={theme.title} />
           </TouchableOpacity>
+
+          <Text style={styles.title}>Configurações</Text>
         </Box>
 
         <Box style={{ marginTop: 32 }}>

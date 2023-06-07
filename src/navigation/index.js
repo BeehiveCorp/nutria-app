@@ -21,6 +21,7 @@ import {
   SignUpStep3,
   SignUpStep4,
   Settings,
+  Exams,
 } from '../pages';
 
 import { TabBarItem } from './components';
@@ -79,6 +80,7 @@ function AuthNavigation() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Explore" component={Explore} />
       <Stack.Screen name="Settings" component={Settings} />
+      <Stack.Screen name="Exams" component={Exams} />
     </Stack.Navigator>
   );
 }

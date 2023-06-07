@@ -47,8 +47,8 @@ export default getStyles = () => {
       backgroundColor: palette.container,
     },
     logoutOption: {
-      backgroundColor: chroma(palette.error).alpha(0.1).hex(),
-      borderColor: chroma(palette.error).alpha(0.5).hex(),
+      backgroundColor: chroma(palette.error).alpha(0.05).hex(),
+      borderColor: chroma(palette.error).alpha(0.2).hex(),
     },
     version: {
       fontSize: FONT_SIZES.small,

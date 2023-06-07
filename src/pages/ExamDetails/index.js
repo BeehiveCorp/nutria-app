@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 import moment from 'moment';
@@ -8,7 +8,7 @@ import { ThemeContext } from '../../contexts';
 import { TOAST_VARIANTS } from '../../utils/constants';
 import { triggerToast } from '../../utils/global';
 import { ExamService } from '../../services';
-import { Box, NutrientCard } from '../../components';
+import { Box, NutrientCard, BottomSheet } from '../../components';
 
 import getStyles from './styles';
 
@@ -16,7 +16,10 @@ const ExamDetails = ({ navigation, route }) => {
   const { theme } = useContext(ThemeContext);
   const styles = getStyles();
 
+  const nutrientBottomSheetRef = useRef(null);
+
   const [exam, setExam] = useState([]);
+  const [selectedNutrient, setSelectedNutrient] = useState(null);
 
   const examId = route.params.id;
 
@@ -54,17 +57,32 @@ const ExamDetails = ({ navigation, route }) => {
           </Box>
 
           {exam?.nutrients?.map((nutrient) => (
-            <Box style={styles.row} horizontal spaceBetween>
+            <Box key={nutrient.id} style={styles.row} horizontal spaceBetween>
               <NutrientCard
                 symbol={nutrient.symbol}
                 name={nutrient.name}
                 description={nutrient.description}
                 result={nutrient.result}
+                onPress={() => {
+                  nutrientBottomSheetRef?.current?.collapse();
+                  setSelectedNutrient(nutrient);
+                }}
               />
             </Box>
           ))}
         </Box>
       </ScrollView>
+
+      <BottomSheet
+        ref={nutrientBottomSheetRef}
+        snapPoints={['45%']}
+        title={selectedNutrient?.name}
+        description={`Simbolo/identificador: ${selectedNutrient?.symbol}`}
+      >
+        <Text style={styles.bottomSheetNutrientDescription}>
+          {selectedNutrient?.description}
+        </Text>
+      </BottomSheet>
     </View>
   );
 };

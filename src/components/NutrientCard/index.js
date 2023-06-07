@@ -1,8 +1,6 @@
 import React, { useContext } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
-import { Feather } from '@expo/vector-icons';
-
 import { ThemeContext } from '../../contexts';
 
 import Box from '../Box';

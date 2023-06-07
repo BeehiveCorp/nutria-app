@@ -38,5 +38,12 @@ export default getStyles = () => {
       color: palette.text,
       textAlign: 'right',
     },
+    bottomSheetNutrientDescription: {
+      fontSize: FONT_SIZES.medium,
+      lineHeight: FONT_SIZES.medium * 1.5,
+      fontFamily: FONT_FAMILIES.montserrat.semiBold,
+      color: palette.text,
+      textAlign: 'justify',
+    },
   });
 };

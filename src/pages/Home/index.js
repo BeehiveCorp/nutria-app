@@ -3,7 +3,7 @@ import { ScrollView, View } from 'react-native';
 
 import { UserContext } from '../../contexts';
 
-import { Box, Button, UserHeader } from '../../components';
+import { Box, UserHeader } from '../../components';
 
 import getStyles from './styles';
 

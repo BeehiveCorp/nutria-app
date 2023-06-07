@@ -21,7 +21,7 @@ const Option = ({ focused, pageCode }) => {
       <Feather
         name={iconName}
         color={chroma(theme.title)
-          .alpha(focused ? 1 : 0.5)
+          .alpha(focused ? 1 : 0.3)
           .hex()}
         size={24}
       />

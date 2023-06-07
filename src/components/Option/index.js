@@ -9,7 +9,14 @@ import Box from '../Box';
 
 import getStyles from './styles';
 
-const Option = ({ onPress, value, isSelected, style, renderIcon }) => {
+const Option = ({
+  onPress,
+  value,
+  isSelected,
+  style,
+  containerStyle,
+  renderIcon,
+}) => {
   const { theme } = useContext(ThemeContext);
   const styles = getStyles();
 
@@ -19,7 +26,7 @@ const Option = ({ onPress, value, isSelected, style, renderIcon }) => {
         spaceBetween
         horizontal
         alignItemsCenter
-        style={styles.bottomSheetOption(isSelected)}
+        style={{ ...styles.bottomSheetOption(isSelected), ...containerStyle }}
       >
         <Box horizontal alignItemsCenter>
           {renderIcon && renderIcon()}

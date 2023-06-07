@@ -10,6 +10,12 @@ export default getStyles = () => {
 
   return StyleSheet.create({
     container: {},
+    avatarContainer: {
+      backgroundColor: palette.container,
+      width: 50,
+      height: 50,
+      borderRadius: 30,
+    },
     avatar: {
       width: 50,
       height: 50,

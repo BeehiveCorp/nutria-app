@@ -47,6 +47,12 @@ const Home = ({ navigation }) => {
     });
   };
 
+  const onStoresPress = () => {
+    navigation.navigate('Stores', {
+      missingNutrients: nutrients,
+    });
+  };
+
   const fetchDependents = async () => {
     const { data, error } = await DependentService.getAllByUserId({ id: user.id });
 
@@ -70,10 +76,11 @@ const Home = ({ navigation }) => {
     }
 
     setExams(data);
+    fetchLastExam(data[0].id);
   };
 
-  const fetchLastExam = async () => {
-    const { data, error } = await ExamService.getById({ id: exams[0].id });
+  const fetchLastExam = async (examId) => {
+    const { data, error } = await ExamService.getById({ id: examId });
 
     if (error) {
       triggerToast({ message: 'Algo deu errado', variant: TOAST_VARIANTS.ERROR });
@@ -88,7 +95,6 @@ const Home = ({ navigation }) => {
     React.useCallback(() => {
       fetchDependents();
       fetchExams();
-      fetchLastExam();
     }, [])
   );
 
@@ -181,6 +187,7 @@ const Home = ({ navigation }) => {
             <TouchableOpacity
               style={{ flex: 1, marginRight: 24 }}
               activeOpacity={0.8}
+              onPress={onStoresPress}
             >
               <Box style={styles.cardContainer}>
                 <Feather size={24} color={theme.accent} name="shopping-bag" />

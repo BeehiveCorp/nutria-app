@@ -10,6 +10,7 @@ import Exams from './Exams';
 import ExamDetails from './ExamDetails';
 import NewExam from './NewExam';
 import NewDependent from './NewDependent';
+import Stores from './Stores';
 
 export {
   Login,
@@ -24,4 +25,5 @@ export {
   ExamDetails,
   NewExam,
   NewDependent,
+  Stores,
 };

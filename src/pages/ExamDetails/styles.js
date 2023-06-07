@@ -27,16 +27,10 @@ export default getStyles = () => {
     row: {
       marginBottom: 12,
     },
-    label: {
-      fontSize: FONT_SIZES.big - 4,
-      fontFamily: FONT_FAMILIES.montserrat.semiBold,
-      color: palette.title,
-    },
     data: {
       fontSize: FONT_SIZES.big - 4,
       fontFamily: FONT_FAMILIES.montserrat.regular,
       color: palette.text,
-      textAlign: 'right',
     },
     bottomSheetNutrientDescription: {
       fontSize: FONT_SIZES.medium,

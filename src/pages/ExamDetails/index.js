@@ -52,7 +52,6 @@ const ExamDetails = ({ navigation, route }) => {
 
         <Box style={{ marginTop: 32 }}>
           <Box style={styles.location} horizontal spaceBetween>
-            <Text style={styles.label}>Local</Text>
             <Text style={styles.data}>{exam?.local}</Text>
           </Box>
 

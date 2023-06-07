@@ -21,10 +21,12 @@ const Exams = ({ navigation }) => {
   const styles = getStyles();
 
   const getAllUserExams = async () => {
-    const { data, error } = await ExamService.getAllById({ userId: user.id });
+    const { data, error } = await ExamService.getAllByUserOrDependentId({
+      userId: user.id,
+    });
 
     if (error) {
-      triggerToast({ message: 'Algo deu errado', variant: TOAST_VARIANTS.ERROR });
+      triggerToast({ message: error, variant: TOAST_VARIANTS.ERROR });
       navigation.goBack();
       return;
     }
@@ -53,6 +55,7 @@ const Exams = ({ navigation }) => {
               key={exam.id}
               value={moment(exam.date).format('DD/MM/YYYY')}
               style={{ marginBottom: 8 }}
+              onPress={() => navigation.navigate('ExamDetails', { id: exam.id })}
             />
           ))}
         </Box>

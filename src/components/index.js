@@ -7,6 +7,7 @@ import BottomSheet from './BottomSheet';
 import Option from './Option';
 import Checkbox from './Checkbox';
 import UserHeader from './UserHeader';
+import NutrientCard from './NutrientCard';
 
 export {
   NutriaLogo,
@@ -18,4 +19,5 @@ export {
   Option,
   Checkbox,
   UserHeader,
+  NutrientCard,
 };

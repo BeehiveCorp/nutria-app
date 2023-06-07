@@ -7,6 +7,7 @@ import SignUpStep3 from './SignUp/Step3';
 import SignUpStep4 from './SignUp/Step4';
 import Settings from './Settings';
 import Exams from './Exams';
+import ExamDetails from './ExamDetails';
 
 export {
   Login,
@@ -18,4 +19,5 @@ export {
   SignUpStep4,
   Settings,
   Exams,
+  ExamDetails,
 };

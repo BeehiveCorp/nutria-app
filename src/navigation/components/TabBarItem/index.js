@@ -10,7 +10,7 @@ import { Box } from '../../../components';
 
 import getStyles from './styles';
 
-const Option = ({ focused, pageCode }) => {
+const TabBarItem = ({ focused, pageCode }) => {
   const { theme } = useContext(ThemeContext);
   const styles = getStyles();
 
@@ -29,4 +29,4 @@ const Option = ({ focused, pageCode }) => {
   );
 };
 
-export default Option;
+export default TabBarItem;
